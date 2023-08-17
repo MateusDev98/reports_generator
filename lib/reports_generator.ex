@@ -1,18 +1,12 @@
 defmodule ReportsGenerator do
-  @moduledoc """
-  Documentation for `ReportsGenerator`.
-  """
+  def build(filename) do
+    case File.read("reports/#{filename}.csv") do
+      {:ok, result} ->
+        result
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ReportsGenerator.hello()
-      :world
-
-  """
-  def hello do
-    :world
+      {:error, reason} ->
+        reason
+        # _ -> "Any case"
+    end
   end
 end
